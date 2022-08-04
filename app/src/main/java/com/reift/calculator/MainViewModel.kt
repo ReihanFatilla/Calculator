@@ -1,6 +1,7 @@
 package com.reift.calculator
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,25 +11,59 @@ class MainViewModel: ViewModel() {
     var currentNumber: MutableLiveData<String> = MutableLiveData("")
     var currentOperator: MutableLiveData<String> = MutableLiveData("")
 
-    var idleNumber: MutableLiveData<Int>? = MutableLiveData()
-    var resultNumber: MutableLiveData<Int>? = MutableLiveData()
+//    var idleNumber: MutableLiveData<Int> = MutableLiveData(0)
+    var resultNumber: MutableLiveData<Int> = MutableLiveData(0)
 
     fun numberClicked(number: Int) {
         currentNumber.value = currentNumber.value + number.toString()
     }
 
     fun operatorClicked(operator: String){
-
         currentOperator.value = operator
-
-        idleNumber?.value = currentNumber.value?.toInt()
-
-        resetCurrentNumber()
+        if(resultNumber.value == 0 && currentNumber.value != ""){
+            Log.i("clearCalculation", "going to if condition")
+            resultNumber.value = currentNumber.value?.toInt()
+            resetCurrentNumber()
+        } else {
+            doCalculation()
+        }
     }
 
     private fun resetCurrentNumber(){
         currentNumber.value = ""
     }
 
+    private fun resetCurrentOperator(){
+        currentOperator.value = ""
+    }
+
+    fun equalClicked() {
+        doCalculation()
+        resetCurrentOperator()
+    }
+
+    private fun doCalculation(){
+        when(currentOperator.value){
+            "+" -> {
+//                Log.i("clearCalculation", "plus operator runned! ")
+//                Log.i("clearCalculation", "idleNumber : ${resultNumber.value} ")
+                resultNumber.value = resultNumber.value?.plus(currentNumber.value!!.toInt())
+//                Log.i("clearCalculation", "idleNumber after plus : ${resultNumber.value} ")
+            }
+            "-" -> {
+                resultNumber.value = resultNumber.value?.minus(currentNumber.value!!.toInt())
+            }
+            "*" -> {
+                resultNumber.value = resultNumber.value?.times(currentNumber.value!!.toInt())
+            }
+        }
+        resetCurrentNumber()
+    }
+
+    fun clearCalculation() {
+        currentNumber.value = ""
+        currentOperator.value = ""
+        resultNumber.value = 0
+    }
 
 }

@@ -22,6 +22,14 @@ class MainActivity : AppCompatActivity() {
             binding.tvCurrentNumber.text = it
         }
 
+        viewModel.currentOperator.observe(this){
+            binding.tvOperator.text = it
+        }
+
+        viewModel.resultNumber.observe(this){
+            binding.tvResult.text = it.toString()
+        }
+
         setUpClickListener()
 
     }
@@ -43,6 +51,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.btn_minus -> { viewModel.operatorClicked("-") }
                 R.id.btn_multiply -> { viewModel.operatorClicked("*") }
                 R.id.btn_divide -> { viewModel.operatorClicked("/") }
+                R.id.btn_equal -> { viewModel.equalClicked() }
+                R.id.btn_clear -> { viewModel.clearCalculation() }
+
             }
         }
 
@@ -60,6 +71,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnMinus.setOnClickListener(listener)
         binding.btnMultiply.setOnClickListener(listener)
         binding.btnDivide.setOnClickListener(listener)
+        binding.btnEqual.setOnClickListener(listener)
+        binding.btnClear.setOnClickListener(listener)
     }
 
 }
