@@ -30,6 +30,15 @@ class MainActivity : AppCompatActivity() {
             binding.tvResult.text = it.toString()
         }
 
+        viewModel.isPositives.observe(this){
+            if(it){
+                binding.btnPosOrNeg.text = "M"
+            } else {
+                binding.btnPosOrNeg.text = "P"
+            }
+        }
+
+
         setUpClickListener()
 
     }
@@ -53,7 +62,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.btn_divide -> { viewModel.operatorClicked("/") }
                 R.id.btn_equal -> { viewModel.equalClicked() }
                 R.id.btn_clear -> { viewModel.clearCalculation() }
-
+                R.id.btn_pos_or_neg -> {
+                    when(binding.btnPosOrNeg.text){
+                        "P" -> {
+                            viewModel.negativeOrPositive("P")
+                        }
+                        "M" -> {
+                            viewModel.negativeOrPositive("M")
+                        }
+                    }
+                }
             }
         }
 
@@ -73,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnDivide.setOnClickListener(listener)
         binding.btnEqual.setOnClickListener(listener)
         binding.btnClear.setOnClickListener(listener)
+        binding.btnPosOrNeg.setOnClickListener(listener)
     }
 
 }

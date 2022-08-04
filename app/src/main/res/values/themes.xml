@@ -17,7 +17,7 @@
 
     <style name="myButtonStyle" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/primary_text</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">150dp</item>
         <item name="textAllCaps">false</item>

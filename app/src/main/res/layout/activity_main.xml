@@ -86,11 +86,11 @@
             />
 
         <Button
-            android:id="@+id/btn_plus_or_minus"
+            android:id="@+id/btn_pos_or_neg"
             android:layout_width="55dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="y"
+            android:text="M"
             android:backgroundTint="@color/secondary_text"
             />
 
@@ -267,7 +267,7 @@
             android:id="@+id/btn_0"
             android:layout_width="55dp"
             android:layout_height="80dp"
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:text="0"
             />
 

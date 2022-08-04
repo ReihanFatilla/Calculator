@@ -3,6 +3,7 @@ package com.reift.calculator
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -10,6 +11,8 @@ class MainViewModel: ViewModel() {
 
     var currentNumber: MutableLiveData<String> = MutableLiveData("")
     var currentOperator: MutableLiveData<String> = MutableLiveData("")
+
+    var isPositives: MutableLiveData<Boolean> = MutableLiveData(true)
 
 //    var idleNumber: MutableLiveData<Int> = MutableLiveData(0)
     var resultNumber: MutableLiveData<Int> = MutableLiveData(0)
@@ -66,6 +69,14 @@ class MainViewModel: ViewModel() {
         currentNumber.value = ""
         currentOperator.value = ""
         resultNumber.value = 0
+    }
+
+    fun negativeOrPositive(status: String) {
+        Log.i("negativeOrPositive", "negativeOrPositive: ${isPositives.value}")
+        when(status){
+            "P" -> isPositives.value = true
+            "M" -> isPositives.value = false
+        }
     }
 
 }
