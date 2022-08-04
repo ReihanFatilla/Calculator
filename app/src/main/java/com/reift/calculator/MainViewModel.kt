@@ -20,11 +20,14 @@ class MainViewModel: ViewModel() {
 
     fun operatorClicked(operator: String){
         currentOperator.value = operator
-        if(resultNumber.value == 0 && currentNumber.value != ""){
+        if(resultNumber.value == 0 || currentNumber.value == "" ){
             Log.i("clearCalculation", "going to if condition")
-            resultNumber.value = currentNumber.value?.toInt()
+            if(currentNumber.value != ""){
+                resultNumber.value = currentNumber.value?.toInt()
+            }
             resetCurrentNumber()
         } else {
+            Log.i("clearCalculation", "going to else condition")
             doCalculation()
         }
     }
@@ -38,6 +41,7 @@ class MainViewModel: ViewModel() {
     }
 
     fun equalClicked() {
+        if(currentNumber.value == "") return
         doCalculation()
         resetCurrentOperator()
     }
