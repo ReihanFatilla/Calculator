@@ -71,12 +71,11 @@ class MainViewModel: ViewModel() {
         resultNumber.value = 0
     }
 
-    fun negativeOrPositive(status: String) {
+    fun negativeOrPositive() {
+        if (currentNumber.value == "") return
+        isPositives.value = !isPositives.value!!
         Log.i("negativeOrPositive", "negativeOrPositive: ${isPositives.value}")
-        when(status){
-            "P" -> isPositives.value = true
-            "M" -> isPositives.value = false
-        }
+        currentNumber.value = currentNumber.value?.toInt()?.times(-1).toString()
     }
 
 }

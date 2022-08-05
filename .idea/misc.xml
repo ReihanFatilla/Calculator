@@ -5,7 +5,8 @@
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable/empty_divider.xml" value="0.1375" />
-        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.24867724867724866" />
+        <entry key="app/src/main/res/drawable/landscape_divider.xml" value="0.1375" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
       </map>
     </option>

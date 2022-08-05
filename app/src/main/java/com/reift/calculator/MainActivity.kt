@@ -62,16 +62,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.btn_divide -> { viewModel.operatorClicked("/") }
                 R.id.btn_equal -> { viewModel.equalClicked() }
                 R.id.btn_clear -> { viewModel.clearCalculation() }
-                R.id.btn_pos_or_neg -> {
-                    when(binding.btnPosOrNeg.text){
-                        "P" -> {
-                            viewModel.negativeOrPositive("P")
-                        }
-                        "M" -> {
-                            viewModel.negativeOrPositive("M")
-                        }
-                    }
-                }
+                R.id.btn_pos_or_neg -> { viewModel.negativeOrPositive() }
             }
         }
 
