@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.btn_minus -> { viewModel.operatorClicked("-") }
                 R.id.btn_multiply -> { viewModel.operatorClicked("*") }
                 R.id.btn_divide -> { viewModel.operatorClicked("/") }
+                R.id.btn_modulus -> { viewModel.operatorClicked("%") }
                 R.id.btn_equal -> { viewModel.equalClicked() }
                 R.id.btn_clear -> { viewModel.clearCalculation() }
                 R.id.btn_pos_or_neg -> { viewModel.negativeOrPositive() }
@@ -83,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnEqual.setOnClickListener(listener)
         binding.btnClear.setOnClickListener(listener)
         binding.btnPosOrNeg.setOnClickListener(listener)
+        binding.btnModulus.setOnClickListener(listener)
     }
 
 }

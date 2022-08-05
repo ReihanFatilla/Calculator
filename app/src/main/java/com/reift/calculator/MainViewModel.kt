@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel: ViewModel() {
 
-    var currentNumber: MutableLiveData<String> = MutableLiveData("")
+    var currentNumber: MutableLiveData<String> = MutableLiveData("0")
     var currentOperator: MutableLiveData<String> = MutableLiveData("")
 
     var isPositives: MutableLiveData<Boolean> = MutableLiveData(true)
@@ -18,23 +18,29 @@ class MainViewModel: ViewModel() {
     var resultNumber: MutableLiveData<Int> = MutableLiveData(0)
 
     fun numberClicked(number: Int) {
-        currentNumber.value = currentNumber.value + number.toString()
+        if(currentNumber.value?.get(0).toString() == "0"){
+            currentNumber.value = number.toString()
+        } else {
+            currentNumber.value = currentNumber.value + number.toString()
+        }
+
     }
 
     fun operatorClicked(operator: String){
+        if(currentNumber.value == "0") return
         currentOperator.value = operator
         if(resultNumber.value == 0){
             Log.i("clearCalculation", "going to if condition")
             resultNumber.value = currentNumber.value?.toInt()
             resetCurrentNumber()
-        } else if (currentNumber.value != ""){
+        } else if (currentNumber.value != "0"){
             Log.i("clearCalculation", "going to else condition")
             doCalculation()
         }
     }
 
     private fun resetCurrentNumber(){
-        currentNumber.value = ""
+        currentNumber.value = "0"
     }
 
     private fun resetCurrentOperator(){
@@ -42,7 +48,7 @@ class MainViewModel: ViewModel() {
     }
 
     fun equalClicked() {
-        if(currentNumber.value == "") return
+        if(currentNumber.value == "0") return
         doCalculation()
         resetCurrentOperator()
     }
@@ -61,12 +67,18 @@ class MainViewModel: ViewModel() {
             "*" -> {
                 resultNumber.value = resultNumber.value?.times(currentNumber.value!!.toInt())
             }
+            "/" -> {
+                resultNumber.value = resultNumber.value?.div(currentNumber.value!!.toInt())
+            }
+            "%" -> {
+                resultNumber.value = resultNumber.value?.mod(currentNumber.value!!.toInt())
+            }
         }
         resetCurrentNumber()
     }
 
     fun clearCalculation() {
-        currentNumber.value = ""
+        currentNumber.value = "0"
         currentOperator.value = ""
         resultNumber.value = 0
     }

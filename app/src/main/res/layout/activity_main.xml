@@ -154,7 +154,7 @@
             android:layout_width="55dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="X"
+            android:text="x"
             android:backgroundTint="@color/accent"
             />
 
