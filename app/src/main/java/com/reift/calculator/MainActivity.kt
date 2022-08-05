@@ -45,25 +45,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpClickListener() {
         val listener = View.OnClickListener { view ->
-            when(view.id){
-                R.id.btn_0 -> { viewModel.numberClicked(0) }
-                R.id.btn_1 -> { viewModel.numberClicked(1) }
-                R.id.btn_2 -> { viewModel.numberClicked(2) }
-                R.id.btn_3 -> { viewModel.numberClicked(3) }
-                R.id.btn_4 -> { viewModel.numberClicked(4) }
-                R.id.btn_5 -> { viewModel.numberClicked(5) }
-                R.id.btn_6 -> { viewModel.numberClicked(6) }
-                R.id.btn_7 -> { viewModel.numberClicked(7) }
-                R.id.btn_8 -> { viewModel.numberClicked(8) }
-                R.id.btn_9 -> { viewModel.numberClicked(9) }
-                R.id.btn_plus -> { viewModel.operatorClicked("+") }
-                R.id.btn_minus -> { viewModel.operatorClicked("-") }
-                R.id.btn_multiply -> { viewModel.operatorClicked("*") }
-                R.id.btn_divide -> { viewModel.operatorClicked("/") }
-                R.id.btn_modulus -> { viewModel.operatorClicked("%") }
-                R.id.btn_equal -> { viewModel.equalClicked() }
-                R.id.btn_clear -> { viewModel.clearCalculation() }
-                R.id.btn_pos_or_neg -> { viewModel.negativeOrPositive() }
+            when (view.id) {
+                R.id.btn_0 -> viewModel.numberClicked(0)
+                R.id.btn_1 -> viewModel.numberClicked(1)
+                R.id.btn_2 -> viewModel.numberClicked(2)
+                R.id.btn_3 -> viewModel.numberClicked(3)
+                R.id.btn_4 -> viewModel.numberClicked(4)
+                R.id.btn_5 -> viewModel.numberClicked(5)
+                R.id.btn_6 -> viewModel.numberClicked(6)
+                R.id.btn_7 -> viewModel.numberClicked(7)
+                R.id.btn_8 -> viewModel.numberClicked(8)
+                R.id.btn_9 -> viewModel.numberClicked(9)
+                R.id.btn_plus -> viewModel.operatorClicked("+")
+                R.id.btn_minus -> viewModel.operatorClicked("-")
+                R.id.btn_multiply -> viewModel.operatorClicked("*")
+                R.id.btn_divide -> viewModel.operatorClicked("/")
+                R.id.btn_modulus -> viewModel.operatorClicked("%")
+                R.id.btn_equal -> viewModel.equalClicked()
+                R.id.btn_clear -> viewModel.clearCalculation()
+                R.id.btn_pos_or_neg -> viewModel.negativeOrPositive()
             }
         }
 
